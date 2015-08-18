@@ -8,9 +8,15 @@
 				font-family: helvetica, arial;
 			}
 
+			.calcs {
+				border-style: solid;
+				border-width: 4px;
+			}
+
 			.section {
 				margin-top: 5vh;
 				margin-bottom: 5vh;
+				background-color: rgba(100,100,100, 0.3);
 			}
 
 			h1, h2 {
@@ -18,17 +24,21 @@
 			}
 
 			span {
-				color: red;
+				color: black;
 				font-size: 2em;
+				cursor: pointer;
+				background-color: rgba(100,100,100, 0.5)
 			}
 
 			p {
-				color: blue;
+				color: red;
 				font-size: 1em;
 			}
 		</style>
 	<body>
 		<h1>Outstanding Loans</h1>
+
+		<h1>BitLendingClub-regaldisclaimer</h1>
 
 		<h2>As per the contract, loans on BLC continue to accrue daily interest until paid.</h2>
 
@@ -69,10 +79,10 @@
 				console.log(timeLapsed);
 				var currentBalance = principal + (timeLapsed*dailyIntAmount);
 
-				var printOut = '<p>Outstanding Principal: '+principal+' BTC</p>'+
+				var printOut = '<div class="calcs"><p>Outstanding Principal: '+principal+' BTC</p>'+
 				'<p>Weekly Interest Rate: '+weeklyIntRate+'%</p>'+
 				'<p>Days since last payment: '+timeLapsed +' days</p>'+
-				'<p>Current Balance: '+currentBalance+' BTC</p>';
+				'<p>Current Balance: '+currentBalance+' BTC</p></div>';
 
 				$(document).ready(function() {
 					$('#'+name).append(printOut);
