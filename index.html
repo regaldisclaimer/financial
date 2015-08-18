@@ -59,9 +59,9 @@
 		<script>
 
 			var loanInfo = {};
-			loanInfo.altinvestor = [0.1, 9.96, 1436936340000];
-			loanInfo.telecomred = [0.03370388, 6, 1438923540000];
-			loanInfo.peterakabob = [0.0323, 12.26, 1438837140000];
+			loanInfo.altinvestor = [0.1, 9.96, 1436936340000, 0.10996, '1C4nETFhAK531EKjpLPwggnoHNJLeZFV3f'];
+			loanInfo.telecomred = [0.03370388, 6, 1438923540000, 0.03572611, '13rT8YM1BqRLwkYw3QFZ9KW3hzJX1Uaw6S'];
+			loanInfo.peterakabob = [0.0323, 12.26, 1438837140000, 0.03625998, '1KUrgKa22Vsugyi8sa23Uy8gjVzJM57Fat'];
 	
 			function calculate (name) {
 				//loan info
@@ -70,6 +70,8 @@
 				var principal = thisLoan[0];
 				var weeklyIntRate = thisLoan[1];
 				var startTime = thisLoan[2];
+				var bitBalance = thisLoan[3];
+				var address = thisLoan[4];
 				console.log(startTime);
 				var dailyIntAmount = (principal * weeklyIntRate * 0.01)/7;
 
@@ -78,11 +80,13 @@
 				var timeLapsed = Math.ceil((currentTime-startTime)/86400000);
 				console.log(timeLapsed);
 				var currentBalance = principal + (timeLapsed*dailyIntAmount);
+				currentBalance = (Math.floor(currentBalance*100000000)/100000000);
 
 				var printOut = '<div class="calcs"><p>Outstanding Principal: '+principal+' BTC</p>'+
 				'<p>Weekly Interest Rate: '+weeklyIntRate+'%</p>'+
 				'<p>Days since last payment: '+timeLapsed +' days</p>'+
-				'<p>Current Balance: '+currentBalance+' BTC</p></div>';
+				'<p>Current Balance: '+currentBalance+' BTC</p>'+
+				'<p><b>Pay '+bitBalance+' BTC to BitLendingClub and '+(Math.ceil((currentBalance*100000000-bitBalance*100000000))/100000000)+' BTC to: '+address+'</p></b></div>';
 
 				$(document).ready(function() {
 					$('#'+name).append(printOut);
