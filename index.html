@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>Regaldisclaimer Financial Services</title>
+		<style>
+			html, body {
+				margin-left: 5vw;
+				height: 100%;
+				font-family: helvetica, arial;
+			}
+
+			.section {
+				margin-top: 5vh;
+				margin-bottom: 5vh;
+			}
+
+			h1, h2 {
+				text-align: center;
+			}
+
+			span {
+				color: red;
+				font-size: 2em;
+			}
+
+			p {
+				color: blue;
+				font-size: 1em;
+			}
+		</style>
+	<body>
+		<h1>Outstanding Loans</h1>
+
+		<h2>As per the contract, loans on BLC continue to accrue daily interest until paid.</h2>
+
+		<h2>Click on your username to see the loan info and current outstanding balance.</h2>
+
+		<div class='section' id='altinvestor'>
+			<span onclick='calculate("altinvestor")'>altinvestor</span>
+		</div>
+		<div class='section' id='telecomred'>
+			<span onclick='calculate("telecomred")'>telecomred</span>
+		</div>
+		<div class='section' id='peterakabob'>
+			<span onclick='calculate("peterakabob")'>peterakabob</span>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+
+			var loanInfo = {};
+			loanInfo.altinvestor = [0.1, 9.96, 1436936340000];
+			loanInfo.telecomred = [0.03370388, 6, 1438923540000];
+			loanInfo.peterakabob = [0.0323, 12.26, 1438837140000];
+	
+			function calculate (name) {
+				//loan info
+				var thisLoan = loanInfo[name];
+
+				var principal = thisLoan[0];
+				var weeklyIntRate = thisLoan[1];
+				var startTime = thisLoan[2];
+				console.log(startTime);
+				var dailyIntAmount = (principal * weeklyIntRate * 0.01)/7;
+
+				var currentTime = new Date().getTime();
+				console.log(currentTime);
+				var timeLapsed = Math.ceil((currentTime-startTime)/86400000);
+				console.log(timeLapsed);
+				var currentBalance = principal + (timeLapsed*dailyIntAmount);
+
+				var printOut = '<p>Outstanding Principal: '+principal+' BTC</p>'+
+				'<p>Weekly Interest Rate: '+weeklyIntRate+'%</p>'+
+				'<p>Days since last payment: '+timeLapsed +' days</p>'+
+				'<p>Current Balance: '+currentBalance+' BTC</p>';
+
+				$(document).ready(function() {
+					$('#'+name).append(printOut);
+				});
+			}
+
+
+		</script>
+	</body>
+</html>
