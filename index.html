@@ -55,13 +55,20 @@
 		<div class='section' id='peterakabob'>
 			<span onclick='calculate("peterakabob")'>peterakabob</span>
 		</div>
+		<div class='section' id='eneszenginn'>
+			<span onclick='calculate("eneszenginn")'>eneszenginn</span>
+		</div>		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script>
 
 			var loanInfo = {};
+
+			//loanInfo.example = [principal, weeklyRate, startTime, BLCBalance, payableAddress];
+
 			loanInfo.altinvestor = [0.1, 9.96, 1436936340000, 0.10996, '1C4nETFhAK531EKjpLPwggnoHNJLeZFV3f'];
 			loanInfo.telecomred = [0.03370388, 6, 1438923540000, 0.03572611, '13rT8YM1BqRLwkYw3QFZ9KW3hzJX1Uaw6S'];
 			loanInfo.peterakabob = [0.0323, 12.26, 1438837140000, 0.03625998, '1KUrgKa22Vsugyi8sa23Uy8gjVzJM57Fat'];
+			loanInfo.eneszenginn = [0.23290000, 17.47, 1439873940000, 0.27358763, '16Q9rWm6zRJXP5dwVPLXMdaTtN5u4DvFq6'];
 	
 			function calculate (name) {
 				//loan info
