@@ -23,6 +23,10 @@
 				text-align: center;
 			}
 
+			h2 {
+				font-weight: 300;
+			}
+
 			span {
 				color: black;
 				font-size: 2em;
@@ -44,7 +48,9 @@
 
 		<h2>Click on your username to see the loan info and current outstanding balance.</h2>
 
-		<h2>Note that delinquencies will be reported to the credit reporting agencies until paid in full.</h2>
+		<h2>Your debt has been <b>forgiven</b>. However, if you still decide to make a payment, you can make a payment to:</h2>
+
+		<h2><a href="bitcoin:19gXz7FUoqv6PPM4N9kXusqF1srva212xt">19gXz7FUoqv6PPM4N9kXusqF1srva212xt</a></h2>
 
 		<div class='section' id='altinvestor'>
 			<span onclick='calculate("altinvestor")'>altinvestor</span>
@@ -93,7 +99,8 @@
 				'<p>Weekly Interest Rate: '+weeklyIntRate+'%</p>'+
 				'<p>Days since last payment: '+timeLapsed +' days</p>'+
 				'<p>Current Balance: '+currentBalance+' BTC</p>'+
-				'<p><b>Pay '+bitBalance+' BTC to BitLendingClub and '+(Math.ceil((currentBalance*100000000-bitBalance*100000000))/100000000)+' BTC to: '+address+'</p></b></div>';
+				'<p><b>Your debt has been exonerated (forgiven). If you still wish to make a payment, you are free to do so.</p>'+
+				'<p>You can make a payment of any amount that you wish to <a href="bitcoin:19gXz7FUoqv6PPM4N9kXusqF1srva212xt">19gXz7FUoqv6PPM4N9kXusqF1srva212xt</a></p></b></div>';
 
 				$(document).ready(function() {
 					$('#'+name).append(printOut);
