@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Portfolio</title>
+</head>
+<body>
+	<p><span>Cost: </span><span id='cost'></span></p>
+	<p><span>Value: </span><span id='value'></span></p>
+	<p><span>Gain: </span><span id='gain'></span></p>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</body>
+<script>
+
+	//cost basis
+	var costBasis = 8900;
+
+	var totalValue = 0;
+
+	var gain = 0;
+
+$(document).ready(function(){
+
+
+	//holdings
+	var holdings = {};
+	holdings.VNQ = {amount: 52.819};
+	holdings.GOOG = {amount: 7};
+	holdings.JBLU = {amount: 1};
+
+
+
+	//0 once all requests come in success
+	var requestQueue = Object.keys(holdings).length;
+
+
+
+	//for each holding
+	Object.keys(holdings).forEach(function(key) {
+
+		//get price
+		$.get('http://dev.markitondemand.com/Api/v2/Quote', {symbol: key}, function(data) {
+			
+			var price = data.LastPrice;
+			console.log(price);
+			holdings[key].price = price;
+
+			//tick requestQueue down by one
+			requestQueue--;
+	
+			var amount = holdings[key].amount;
+			console.log(amount);
+
+			//store cap
+			var cap = amount*price;
+			console.log(cap);
+			holdings[key].cap = cap;
+
+			//add to total
+			totalValue += cap;
+
+			if(requestQueue === 0) {
+				//this is the last success response
+				display();
+				gain = (totalValue-costBasis)/(costBasis/100);
+			}
+
+		});
+	});
+
+
+});	
+
+function display() {
+	$(document).ready(function() {
+		$('#cost').append(costBasis);
+		$('#value').append(totalValue);
+		$('#gain').append(gain+' &');
+	});
+}
+
+</script>
+</html>
