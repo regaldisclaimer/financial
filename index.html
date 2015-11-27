@@ -48,7 +48,7 @@
 
 		<h2>Click on your username to see the loan info and current outstanding balance.</h2>
 
-		<h2>All outstanding debt has been sent to a collecting agency by loanbase/</h2>
+		<h2>All outstanding debt has been sent to a collecting agency by loanbase.</h2>
 
 		
 
@@ -98,9 +98,7 @@
 				var printOut = '<div class="calcs"><p>Outstanding Principal: '+principal+' BTC</p>'+
 				'<p>Weekly Interest Rate: '+weeklyIntRate+'%</p>'+
 				'<p>Days since last payment: '+timeLapsed +' days</p>'+
-				'<p>Current Balance: '+currentBalance+' BTC</p>'+
-				+
-				'</div>';
+				'<p>Current Balance: '+currentBalance+' BTC</p></div>';
 
 				$(document).ready(function() {
 					$('#'+name).append(printOut);
