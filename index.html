@@ -42,15 +42,15 @@
 	<body>
 		<h1>Outstanding Loans</h1>
 
-		<h1>BitLendingClub-regaldisclaimer</h1>
+		<h1>loanbase (previously BitLendingClub)-regaldisclaimer</h1>
 
 		<h2>As per the contract, loans on BLC continue to accrue daily interest until paid.</h2>
 
 		<h2>Click on your username to see the loan info and current outstanding balance.</h2>
 
-		<h2>Your debt has been <b>forgiven</b>. However, if you still decide to make a payment, you can make a payment to:</h2>
+		<h2>All outstanding debt has been sent to a collecting agency by loanbase/</h2>
 
-		<h2><a href="bitcoin:19gXz7FUoqv6PPM4N9kXusqF1srva212xt">19gXz7FUoqv6PPM4N9kXusqF1srva212xt</a></h2>
+		
 
 		<div class='section' id='altinvestor'>
 			<span onclick='calculate("altinvestor")'>altinvestor</span>
@@ -99,8 +99,8 @@
 				'<p>Weekly Interest Rate: '+weeklyIntRate+'%</p>'+
 				'<p>Days since last payment: '+timeLapsed +' days</p>'+
 				'<p>Current Balance: '+currentBalance+' BTC</p>'+
-				'<p><b>Your debt has been exonerated (forgiven). If you still wish to make a payment, you are free to do so.</p>'+
-				'<p>You can make a payment of any amount that you wish to <a href="bitcoin:19gXz7FUoqv6PPM4N9kXusqF1srva212xt">19gXz7FUoqv6PPM4N9kXusqF1srva212xt</a></p></b></div>';
+				+
+				'</div>';
 
 				$(document).ready(function() {
 					$('#'+name).append(printOut);
